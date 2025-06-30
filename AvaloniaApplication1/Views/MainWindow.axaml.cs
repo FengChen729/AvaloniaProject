@@ -1,6 +1,7 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Platform.Storage;
 using System.Threading.Tasks;
 
 namespace AvaloniaApplication1.Views
@@ -12,20 +13,18 @@ namespace AvaloniaApplication1.Views
             InitializeComponent();
         }
 
-        private async void BrowseButton_Click(object sender, RoutedEventArgs e)
+        private async void BrowseFolderButton_Click(object sender, RoutedEventArgs e)
         {
-            // 创建打开文件对话框
-            var dialog = new OpenFileDialog();
-            dialog.Title = "Select a file";
-            dialog.AllowMultiple = false;
-
-            // 显示对话框并获取结果
-            var result = await dialog.ShowAsync(this);
-
-            // 如果用户选择了文件（没有取消）
-            if (result != null && result.Length > 0)
+            var topLevel = TopLevel.GetTopLevel(this);
+            var folders = await topLevel.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
             {
-                FilePathTextBox.Text = result[0]; // 将第一个选择的文件路径显示在文本框中
+                Title = "Select a folder",
+                AllowMultiple = false
+            });
+
+            if (folders.Count > 0)
+            {
+                PathTextBox.Text = folders[0].Path.LocalPath;
             }
         }
     }

@@ -9,10 +9,9 @@
     <DockPanel Margin="20">
         <!-- 文件路径输入框和浏览按钮 -->
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Spacing="10">
-            <TextBox x:Name="FilePathTextBox" Width="200" Height="10" 
-                     Watermark="Select a file..." IsReadOnly="True"/>
-            <Button x:Name="BrowseButton" Content="Browse..." 
-                    Click="BrowseButton_Click"/>
+            <TextBox x:Name="PathTextBox" Width="200" Height="10" 
+                     Watermark="Select a folder..." IsReadOnly="True"/>
+            <Button Content="Browse..." Click="BrowseFolderButton_Click"/>
         </StackPanel>
     </DockPanel>
 </Window>
