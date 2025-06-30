@@ -1,9 +1,16 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="clr-namespace:AvaloniaApplication1.Converters"
              x:Class="AvaloniaApplication1.App"
              RequestedThemeVariant="Default">
              <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
 
+    
+    <Application.Resources>
+        <converters:DepthToMarginConverter x:Key="DepthToMarginConverter"/>
+        <converters:ExpanderIconConverter x:Key="ExpanderIconConverter"/>
+    </Application.Resources>
+             
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>

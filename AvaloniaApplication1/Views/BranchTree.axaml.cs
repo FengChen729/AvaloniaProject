@@ -1,13 +1,20 @@
-﻿using Avalonia;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using AvaloniaApplication1.ViewModels;
 
-namespace AvaloniaApplication1.Views;
-
-public partial class BranchTree : Window
+namespace AvaloniaApplication1.Views
 {
-    public BranchTree()
+    public partial class BranchTree : UserControl
     {
-        InitializeComponent();
+        public BranchTree()
+        {
+            InitializeComponent();
+            DataContext = new BranchTreeViewModel(); // 设置默认DataContext
+        }
+
+        private void InitializeComponent()
+        {
+            AvaloniaXamlLoader.Load(this);
+        }
     }
 }

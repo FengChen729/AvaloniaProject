@@ -1,0 +1,19 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:AvaloniaApplication1.Views.Controls"
+             xmlns:models="clr-namespace:AvaloniaApplication1.Models"
+             mc:Ignorable="d"
+             x:Class="AvaloniaApplication1.Views.Controls.BranchTreeNodeView"
+             x:DataType="models:BranchTreeNode">
+    
+    <StackPanel Orientation="Horizontal" Spacing="5" Margin="{Binding Depth, Converter={StaticResource DepthToMarginConverter}}">
+        <CheckBox IsChecked="{Binding IsSelected}" VerticalAlignment="Center"/>
+        <Button Content="{Binding IsExpanded, Converter={StaticResource ExpanderIconConverter}}" 
+                Command="{Binding ToggleExpandedCommand}"
+                Width="20" Height="20" Padding="0"
+                IsVisible="{Binding HasChildren}"/>
+        <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+    </StackPanel>
+</UserControl>
