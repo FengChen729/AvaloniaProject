@@ -3,12 +3,12 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
-using AvaloniaApplication1.Commands;
+using AvaloniaApplication1.Command;
 namespace AvaloniaApplication1.Models
 {
     public class BranchTreeNode : INotifyPropertyChanged
     {
-        private string _name;
+        private string? _name;
         private bool _isExpanded;
         private bool _isSelected;
 

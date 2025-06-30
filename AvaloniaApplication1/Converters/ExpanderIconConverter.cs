@@ -6,12 +6,12 @@ namespace AvaloniaApplication1.Converters
 {
     public class ExpanderIconConverter : IValueConverter
     {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
-            return (value is bool expanded && expanded) ? "▼" : "▶";
+            return (value is bool expanded && expanded) ? "2" : "1";
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
