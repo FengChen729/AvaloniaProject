@@ -1,8 +1,7 @@
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using AvaloniaApplication1.ViewModels;
-using System.Threading.Tasks;
+using Avalonia.Platform.Storage;
+using AvaloniaApplication1.ViewModel;
 
 namespace AvaloniaApplication1.Views
 {
@@ -20,12 +19,15 @@ namespace AvaloniaApplication1.Views
 
         private async void BrowseButton_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new OpenFolderDialog();
-            dialog.Title = "Select a folder";
+            var options = new FolderPickerOpenOptions
+            {
+                Title = "Select a folder",
+                AllowMultiple = false
+            };
 
-            var result = await dialog.ShowAsync(this);
-
-            if (!string.IsNullOrEmpty(result))
+            var folders = await StorageProvider.OpenFolderPickerAsync(options);
+            
+            if (folders.Count > 0 && folders[0].TryGetLocalPath() is string result)
             {
                 FilePathTextBox.Text = result;
                 // 当选择文件夹后，加载其树形结构

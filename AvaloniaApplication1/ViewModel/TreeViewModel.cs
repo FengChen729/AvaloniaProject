@@ -4,11 +4,11 @@ using System.Collections.ObjectModel;
 using System.IO;
 using Avalonia.Dialogs.Internal;
 
-namespace AvaloniaApplication1.ViewModels
+namespace AvaloniaApplication1.ViewModel
 {
     public class TreeViewModel : AvaloniaDialogsInternalViewModelBase
     {
-        private ObservableCollection<TreeNode> _nodes;
+        private ObservableCollection<TreeNode> _nodes = new ObservableCollection<TreeNode>();
         
         // 树的根节点集合
         public ObservableCollection<TreeNode> Nodes
@@ -19,7 +19,6 @@ namespace AvaloniaApplication1.ViewModels
 
         public TreeViewModel()
         {
-            Nodes = new ObservableCollection<TreeNode>();
         }
         
         // 从指定路径加载树形结构（示例使用文件系统）
@@ -34,7 +33,7 @@ namespace AvaloniaApplication1.ViewModels
         }
         
         // 递归创建树节点（可根据不同数据源重写此方法）
-        private TreeNode CreateNodeFromPath(string path)
+        private TreeNode? CreateNodeFromPath(string path)
         {
             if (!Directory.Exists(path))
                 return null;
