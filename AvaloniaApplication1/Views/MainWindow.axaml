@@ -2,16 +2,35 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:AvaloniaApplication1.ViewModels"
+        xmlns:models="clr-namespace:AvaloniaApplication1.Models"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AvaloniaApplication1.Views.MainWindow"
         Title="File Path Selector">
     
+    <Design.DataContext>
+        <viewModels:TreeViewModel />
+    </Design.DataContext>
+    
     <DockPanel Margin="20">
-        <!-- 文件路径输入框和浏览按钮 -->
         <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Spacing="10">
-            <TextBox x:Name="PathTextBox" Width="200" Height="10" 
-                     Watermark="Select a folder..." IsReadOnly="True"/>
-            <Button Content="Browse..." Click="BrowseFolderButton_Click"/>
+            <TextBox x:Name="FilePathTextBox" Width="200"
+                     Watermark="Select a file..." IsReadOnly="True"/>
+            <Button x:Name="BrowseButton" Content="Browse..." 
+                    Click="BrowseButton_Click"/>
         </StackPanel>
+        
+        <TreeView DockPanel.Dock="Bottom" Margin="0,20,0,0"
+                  x:DataType="viewModels:TreeViewModel">
+            <TreeView.ItemsSource>
+                <Binding Path="Nodes" />
+            </TreeView.ItemsSource>
+            <TreeView.ItemTemplate>
+                <TreeDataTemplate DataType="{x:Type models:TreeNode}" 
+                                  ItemsSource="{Binding Children}">
+                    <TextBlock Text="{Binding Name}"/>
+                </TreeDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
     </DockPanel>
 </Window>
