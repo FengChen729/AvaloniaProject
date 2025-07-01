@@ -16,10 +16,6 @@ namespace AvaloniaApplication1.ViewModel
             get => _nodes;
             set => this.RaiseAndSetIfChanged(ref _nodes, value);
         }
-
-        public TreeViewModel()
-        {
-        }
         
         // 从指定路径加载树形结构（示例使用文件系统）
         public void LoadFromPath(string path)
@@ -32,7 +28,7 @@ namespace AvaloniaApplication1.ViewModel
             }
         }
         
-        // 递归创建树节点（可根据不同数据源重写此方法）
+        // 递归创建树节点******（可根据不同数据源重写此方法）******
         private TreeNode? CreateNodeFromPath(string path)
         {
             if (!Directory.Exists(path))

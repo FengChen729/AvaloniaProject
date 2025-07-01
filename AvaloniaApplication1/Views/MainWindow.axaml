@@ -2,8 +2,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:viewModel="clr-namespace:AvaloniaApplication1.ViewModel"
         xmlns:control="clr-namespace:AvaloniaApplication1.Views.Control"
+        xmlns:viewModel="clr-namespace:AvaloniaApplication1.ViewModel"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AvaloniaApplication1.Views.MainWindow"
         Title="File Path Selector">
@@ -12,14 +12,36 @@
         <viewModel:TreeViewModel />
     </Design.DataContext>
     
-    <DockPanel Margin="20">
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Spacing="10">
-            <TextBox x:Name="FilePathTextBox" Width="200"
-                     Watermark="Select a file..." IsReadOnly="True"/>
-            <Button x:Name="BrowseButton" Content="Browse..." 
-                    Click="BrowseButton_Click"/>
-        </StackPanel>
+    <Grid>
+        <!-- 定义列：左侧边栏和主内容区 -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" MinWidth="200" MaxWidth="300"/>
+            <ColumnDefinition Width="5"/> <!-- 分隔线 -->
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         
-        <control:TreeViewControl DockPanel.Dock="Bottom" />
-    </DockPanel>
+        <!-- 左侧边栏 - TreeView -->
+        <control:TreeViewControl Grid.Column="0" Background="#f0f0f0"/>
+        
+        <!-- 分隔线 -->
+        <GridSplitter Grid.Column="1" Width="0.2" Background="Gray"
+                      HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
+                      ShowsPreview="True"/>
+        
+        <!-- 右侧主内容区 -->
+        <DockPanel Grid.Column="2" Margin="20">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" Spacing="10">
+                <TextBox x:Name="FilePathTextBox" Width="200"
+                         Watermark="Select a file..." IsReadOnly="True"/>
+                <Button x:Name="BrowseButton" Content="Browse..." 
+                        Click="BrowseButton_Click"/>
+            </StackPanel>
+            
+            <!-- 这里可以添加其他内容 -->
+            <TextBlock Text="Main content area" 
+                       VerticalAlignment="Center" 
+                       HorizontalAlignment="Center"
+                       FontSize="24" Foreground="LightGray"/>
+        </DockPanel>
+    </Grid>
 </Window>

@@ -1,4 +1,5 @@
 ﻿using System.Collections.ObjectModel;
+using Avalonia.Media;
 
 namespace AvaloniaApplication1.Models;
 
@@ -10,6 +11,8 @@ public class TreeNode
     public object? Tag { get; set; }
 
     public TreeNode? Parent { get; set; }
+    public IImage? Icon { get; set; }
+    public bool IsDirectory { get; set; }
     
     // 子节点集合（使用ObservableCollection实现自动UI更新）
     public ObservableCollection<TreeNode> Children { get; set; } = new ObservableCollection<TreeNode>();

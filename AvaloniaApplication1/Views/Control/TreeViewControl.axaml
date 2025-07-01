@@ -4,20 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:models="clr-namespace:AvaloniaApplication1.Models"
              xmlns:viewModel="clr-namespace:AvaloniaApplication1.ViewModel"
-             mc:Ignorable="d" 
-             d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d"
+             d:DesignWidth="250" d:DesignHeight="450"
              x:Class="AvaloniaApplication1.Views.Control.TreeViewControl">
     
-    <TreeView Margin="0,20,0,0"
-              x:DataType="viewModel:TreeViewModel" >
+    <TreeView x:Name="FolderTreeView"
+              x:DataType="viewModel:TreeViewModel"
+              Background="Transparent">
         <TreeView.ItemsSource>
             <Binding Path="Nodes" />
         </TreeView.ItemsSource>
         <TreeView.ItemTemplate>
-            <TreeDataTemplate DataType="{x:Type models:TreeNode}" 
+            <TreeDataTemplate DataType="{x:Type models:TreeNode}"
                               ItemsSource="{Binding Children}">
-                <TextBlock Text="{Binding Name}"/>
+                <StackPanel Orientation="Horizontal" Spacing="5">
+                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                </StackPanel>
             </TreeDataTemplate>
         </TreeView.ItemTemplate>
+        
+        <!-- 树形视图样式 -->
+        <TreeView.Styles>
+            <Style Selector="TreeViewItem">
+                <Setter Property="Padding" Value="2"/>
+                <Setter Property="Margin" Value="0 2"/>
+            </Style>
+        </TreeView.Styles>
     </TreeView>
 </UserControl>
