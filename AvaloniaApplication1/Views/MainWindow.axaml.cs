@@ -12,7 +12,6 @@ namespace AvaloniaApplication1.Views
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new TreeViewModel();
             _viewModel = new TreeViewModel();
             DataContext = _viewModel;
         }
