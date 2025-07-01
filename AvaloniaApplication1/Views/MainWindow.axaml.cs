@@ -1,10 +1,7 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using AvaloniaApplication1.ViewModels;
-using System.Threading.Tasks;
 
 namespace AvaloniaApplication1.Views
 {
