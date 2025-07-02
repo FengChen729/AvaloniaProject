@@ -1,3 +1,12 @@
+<!-- 
+    Avalonia UI 主窗口定义
+    xmlns: 引入必要的命名空间
+    - avaloniaui: Avalonia UI核心命名空间
+    - x: XAML相关功能
+    - d: 设计时支持
+    - mc: XAML兼容性标记
+    - vm: 视图模型命名空间
+-->
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,23 +16,33 @@
         d:DesignWidth="800" d:DesignHeight="450"
         x:DataType="vm:MainWindowViewModel"
         x:Class="AvaloniaApplication2.Views.MainWindow"
-        Title="人员管理">
+        Title="人员管理">  <!-- 窗口标题 -->
 
+    <!-- 设计时数据上下文，仅在设计器中生效 -->
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
+    <!-- 主布局网格，设置10像素外边距 -->
     <Grid Margin="10">
+        <!-- 列定义：第一列自适应，第二列自动宽度 -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
+        <!-- 
+            人员数据表格 (第一列)
+            - 绑定到People集合
+            - 双向绑定选中项到SelectedPerson
+            - 自定义列配置
+        -->
         <DataGrid Grid.Column="0"
                   ItemsSource="{Binding People}"
                   SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"
                   AutoGenerateColumns="False"
                   IsReadOnly="False"
+                  CanUserResizeColumns="True"
                   BorderBrush="#FFCCCCCC"
                   BorderThickness="1"
                   GridLinesVisibility="All"
@@ -32,18 +51,36 @@
                   VerticalGridLinesBrush="#FFEEEEEE"
                   Background="White">
             <DataGrid.Columns>
+                <!-- 姓名列 (文本) -->
                 <DataGridTextColumn Header="姓名" Binding="{Binding Name}" Width="*"/>
+                
+                <!-- 年龄列 (文本) -->
                 <DataGridTextColumn Header="年龄" Binding="{Binding Age}" Width="100"/>
+                
+                <!-- 婚姻状况列 (复选框) -->
                 <DataGridCheckBoxColumn Header="已婚" Binding="{Binding IsMarried}" Width="80"/>
+                
+                <!-- 
+                    学历列 (模板列)
+                    - 显示时使用TextBlock
+                    - 编辑时使用ComboBox
+                -->
                 <DataGridTemplateColumn Header="学历" Width="*">
+                    <!-- 显示模板 -->
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Text="{Binding EducationLevel}"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
+                    
+                    <!-- 编辑模板 -->
                     <DataGridTemplateColumn.CellEditingTemplate>
                         <DataTemplate>
-                            <!-- 修改为以下绑定方式 -->
+                            <!-- 
+                                下拉框绑定:
+                                - 数据源来自视图模型的静态属性
+                                - 双向绑定到当前项的EducationLevel
+                            -->
                             <ComboBox 
                                 ItemsSource="{Binding Source={x:Static vm:MainWindowViewModel.StaticEducationLevels}}"
                                 SelectedItem="{Binding EducationLevel, Mode=TwoWay}"
@@ -54,12 +91,15 @@
             </DataGrid.Columns>
         </DataGrid>
 
+        <!-- 操作按钮面板 (第二列) -->
         <StackPanel Grid.Column="1" Margin="10,0,0,0" Spacing="10">
+            <!-- 添加人员按钮 -->
             <Button Command="{Binding AddPersonCommand}"
                     Width="40" Height="40"
                     Content="➕" FontSize="16"
                     ToolTip.Tip="添加人员"/>
             
+            <!-- 删除人员按钮 -->
             <Button Command="{Binding RemovePersonCommand}"
                     Width="40" Height="40"
                     Content="➖" FontSize="16"
