@@ -1,17 +1,30 @@
-﻿using AvaloniaApplication2.Models;
+﻿using AvaloniaApplication2.Commands;
+using AvaloniaApplication2.Models;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
-using AvaloniaApplication2.Commands;
 
 namespace AvaloniaApplication2.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
         public ObservableCollection<Person> People { get; }
- 
+        
+        // 当前选中的Person
+        private Person _selectedPerson;
+        public Person SelectedPerson
+        {
+            get => _selectedPerson;
+            set
+            {
+                _selectedPerson = value;
+                OnPropertyChanged(nameof(SelectedPerson));
+                (RemovePersonCommand as RelayCommand)?.RaiseCanExecuteChanged();
+            }
+        }
+
         public ICommand AddPersonCommand { get; }
         public ICommand RemovePersonCommand { get; }
-        
+
         public MainWindowViewModel()
         {
             People = new ObservableCollection<Person>
@@ -22,14 +35,24 @@ namespace AvaloniaApplication2.ViewModels
             };
 
             AddPersonCommand = new RelayCommand(AddPerson);
-            RemovePersonCommand = new RelayCommand(RemovePerson);
+            RemovePersonCommand = new RelayCommand(RemovePerson, CanRemovePerson);
         }
-        
-        private void AddPerson() => People.Add(new Person("New", "People"));
+
+        private void AddPerson()
+        {
+            var newPerson = new Person("New", "Person");
+            People.Add(newPerson);
+            SelectedPerson = newPerson; // 自动选中新增的项目
+        }
 
         private void RemovePerson()
         {
-            if (People.Count > 0) People.RemoveAt(People.Count - 1);
+            if (SelectedPerson != null)
+            {
+                People.Remove(SelectedPerson);
+            }
         }
+
+        private bool CanRemovePerson() => SelectedPerson != null;
     }
 }
