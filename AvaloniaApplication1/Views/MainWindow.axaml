@@ -24,7 +24,7 @@
         <control:TreeViewControl Grid.Column="0" Background="#f0f0f0"/>
         
         <!-- 分隔线 -->
-        <GridSplitter Grid.Column="1" Width="0.2" Background="Gray"
+        <GridSplitter Grid.Column="1" Width="0.2" Background="#b0b0b0"
                       HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
                       ShowsPreview="True"/>
         

@@ -1,0 +1,43 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModel="clr-namespace:AvaloniaApplication2.ViewModels"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaApplication2.Views.MainWindow"
+        x:DataType="viewModel:MainWindowViewModel"
+        Title="AvaloniaApplication2">
+        <Design.DataContext>
+                <viewModel:MainWindowViewModel/>
+        </Design.DataContext>
+        
+        <Grid>
+                <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                
+                <DataGrid Grid.Column="0" Margin="20"
+                          ItemsSource="{Binding People}" 
+                          AutoGenerateColumns="True" 
+                          IsReadOnly="False"
+                          GridLinesVisibility="All"
+                          BorderThickness="1" BorderBrush="Gray"/>
+                
+                <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Top">
+                        <Button Width="45" Height="45" Margin="0,0,0,10"
+                                Command="{Binding AddPersonCommand}"
+                                Content="➕" FontSize="20"
+                                Background="Transparent"
+                                BorderBrush="Gray" BorderThickness="1"
+                                CornerRadius="25"/>
+                        
+                        <Button Width="45" Height="45"
+                                Command="{Binding RemovePersonCommand}"
+                                Content="➖" FontSize="20"
+                                Background="Transparent"
+                                BorderBrush="Gray" BorderThickness="1"
+                                CornerRadius="25"/>
+                </StackPanel>
+        </Grid>
+</Window>
