@@ -2,7 +2,7 @@
 
 namespace AvaloniaApplication2.ViewModels
 {
-    public class ViewModelBase : INotifyPropertyChanged
+    public abstract class ViewModelBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -12,4 +12,3 @@ namespace AvaloniaApplication2.ViewModels
         }
     }
 }
-

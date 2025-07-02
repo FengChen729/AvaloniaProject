@@ -4,39 +4,33 @@ namespace AvaloniaApplication2.Models
 {
     public class Person : INotifyPropertyChanged
     {
-        private string _firstName;
-        private string _lastName;
+        private string? _name;
+        private int _age;
+        private bool _isMarried;
+        private EducationLevel _educationLevel;
 
-        public string FirstName
+        public string? Name
         {
-            get => _firstName;
-            set
-            {
-                if (_firstName != value)
-                {
-                    _firstName = value;
-                    OnPropertyChanged(nameof(FirstName));
-                }
-            }
+            get => _name;
+            set { _name = value; OnPropertyChanged(nameof(Name)); }
         }
 
-        public string LastName
+        public int Age
         {
-            get => _lastName;
-            set
-            {
-                if (_lastName != value)
-                {
-                    _lastName = value;
-                    OnPropertyChanged(nameof(LastName));
-                }
-            }
+            get => _age;
+            set { _age = value; OnPropertyChanged(nameof(Age)); }
         }
-        
-        public Person(string firstName, string lastName)
+
+        public bool IsMarried
         {
-            FirstName = firstName;
-            LastName = lastName;
+            get => _isMarried;
+            set { _isMarried = value; OnPropertyChanged(nameof(IsMarried)); }
+        }
+
+        public EducationLevel EducationLevel
+        {
+            get => _educationLevel;
+            set { _educationLevel = value; OnPropertyChanged(nameof(EducationLevel)); }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;

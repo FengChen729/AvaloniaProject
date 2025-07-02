@@ -3,44 +3,67 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:AvaloniaApplication2.ViewModels"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d"
+        d:DesignWidth="800" d:DesignHeight="450"
         x:DataType="vm:MainWindowViewModel"
         x:Class="AvaloniaApplication2.Views.MainWindow"
-        Title="AvaloniaApplication2">
-    
+        Title="人员管理">
+
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <Grid>
+    <Grid Margin="10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <DataGrid Grid.Column="0" Margin="20" 
-                  ItemsSource="{Binding People}" 
+        <DataGrid Grid.Column="0"
+                  ItemsSource="{Binding People}"
                   SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"
-                  SelectionMode="Single"
-                  AutoGenerateColumns="True" 
+                  AutoGenerateColumns="False"
                   IsReadOnly="False"
+                  BorderBrush="#FFCCCCCC"
+                  BorderThickness="1"
                   GridLinesVisibility="All"
-                  BorderThickness="1" BorderBrush="Gray"/>
+                  HeadersVisibility="All"
+                  HorizontalGridLinesBrush="#FFEEEEEE"
+                  VerticalGridLinesBrush="#FFEEEEEE"
+                  Background="White">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="姓名" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="年龄" Binding="{Binding Age}" Width="100"/>
+                <DataGridCheckBoxColumn Header="已婚" Binding="{Binding IsMarried}" Width="80"/>
+                <DataGridTemplateColumn Header="学历" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding EducationLevel}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate>
+                            <!-- 修改为以下绑定方式 -->
+                            <ComboBox 
+                                ItemsSource="{Binding Source={x:Static vm:MainWindowViewModel.StaticEducationLevels}}"
+                                SelectedItem="{Binding EducationLevel, Mode=TwoWay}"
+                                HorizontalAlignment="Stretch"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
-        <StackPanel Grid.Column="1" Margin="10" VerticalAlignment="Top">
-            <Button Width="45" Height="45" Margin="0,0,0,10"
-                    Command="{Binding AddPersonCommand}"
-                    Content="➕" FontSize="20"
-                    Background="Transparent"
-                    BorderBrush="Gray" BorderThickness="1"
-                    CornerRadius="25"/>
+        <StackPanel Grid.Column="1" Margin="10,0,0,0" Spacing="10">
+            <Button Command="{Binding AddPersonCommand}"
+                    Width="40" Height="40"
+                    Content="➕" FontSize="16"
+                    ToolTip.Tip="添加人员"/>
             
-            <Button Width="45" Height="45"
-                    Command="{Binding RemovePersonCommand}"
-                    Content="➖" FontSize="20"
-                    Background="Transparent"
-                    BorderBrush="Gray" BorderThickness="1"
-                    CornerRadius="25"/>
+            <Button Command="{Binding RemovePersonCommand}"
+                    Width="40" Height="40"
+                    Content="➖" FontSize="16"
+                    ToolTip.Tip="删除人员"/>
         </StackPanel>
     </Grid>
 </Window>
