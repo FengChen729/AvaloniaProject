@@ -27,4 +27,23 @@
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="assets\1.png" />
+      <AvaloniaResource Include="assets\1.png" />
+      <None Remove="assets\2.png" />
+      <AvaloniaResource Include="assets\2.png" />
+      <None Remove="assets\3.png" />
+      <AvaloniaResource Include="assets\3.png" />
+      <None Remove="assets\4.png" />
+      <AvaloniaResource Include="assets\4.png" />
+      <None Remove="assets\5.png" />
+      <AvaloniaResource Include="assets\5.png" />
+      <None Remove="assets\6.png" />
+      <AvaloniaResource Include="assets\6.png" />
+      <None Remove="assets\7.png" />
+      <AvaloniaResource Include="assets\7.png" />
+      <None Remove="assets\8.png" />
+      <AvaloniaResource Include="assets\8.png" />
+    </ItemGroup>
 </Project>

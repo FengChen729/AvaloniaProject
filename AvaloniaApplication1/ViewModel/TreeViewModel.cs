@@ -3,6 +3,8 @@ using AvaloniaApplication1.Models;
 using System.Collections.ObjectModel;
 using System.IO;
 using Avalonia.Dialogs.Internal;
+using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 
 namespace AvaloniaApplication1.ViewModel
 {
@@ -35,11 +37,14 @@ namespace AvaloniaApplication1.ViewModel
                 return null;
 
             var dirInfo = new DirectoryInfo(path);
-            var node = new TreeNode(dirInfo.Name, dirInfo.FullName);
+            var node = new TreeNode(dirInfo.Name, dirInfo.FullName)
+            {
+                IsDirectory = true,
+                Icon = LoadIconForFolder()
+            };
 
             try
             {
-                // 加载子目录
                 foreach (var subDir in dirInfo.GetDirectories())
                 {
                     var childNode = CreateNodeFromPath(subDir.FullName);
@@ -50,18 +55,61 @@ namespace AvaloniaApplication1.ViewModel
                     }
                 }
 
-                // 加载文件（作为叶子节点）
                 foreach (var file in dirInfo.GetFiles())
                 {
-                    node.Children.Add(new TreeNode(file.Name, file.FullName));
+                    var fileNode = new TreeNode(file.Name, file.FullName)
+                    {
+                        IsDirectory = false,
+                        Icon = LoadIconForFile(file.FullName)
+                    };
+                    node.Children.Add(fileNode);
                 }
             }
             catch (UnauthorizedAccessException)
             {
-                // 处理无权限访问的目录
                 node.Children.Add(new TreeNode("Access Denied"));
             }
+
             return node;
+        }
+
+        
+        private Bitmap? LoadIconForFile(string filePath)
+        {
+            string extension = Path.GetExtension(filePath).ToLower();
+
+            // 你可以根据实际文件类型调整映射
+            string iconPath = extension switch
+            {
+                ".txt" => "assets/2.png",
+                ".pdf" => "assets/3.png",
+                ".doc" or ".docx" => "assets/4.png",
+                ".jpg" or ".jpeg" or ".png" => "assets/5.png",
+                ".exe" => "assets/6.png",
+                ".zip" or ".rar" => "assets/7.png",
+                _ => "assets/8.png"
+            };
+
+            return LoadBitmap(iconPath);
+        }
+
+        private Bitmap? LoadIconForFolder()
+        {
+            return LoadBitmap("assets/1.png");
+        }
+
+        private Bitmap? LoadBitmap(string relativePath)
+        {
+            try
+            {
+                var uri = new Uri($"avares://AvaloniaApplication1/{relativePath}");
+                using var stream = AssetLoader.Open(uri);
+                return new Bitmap(stream);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }

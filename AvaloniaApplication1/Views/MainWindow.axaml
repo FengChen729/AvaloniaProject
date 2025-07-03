@@ -36,8 +36,15 @@
                 <Button x:Name="BrowseButton" Content="Browse..." 
                         Click="BrowseButton_Click"/>
             </StackPanel>
-            
-            <!-- 这里可以添加其他内容 -->
+
+            <!-- 图片展示区域 -->
+            <Image Source="avares://AvaloniaApplication1/assets/1.png"
+                   Stretch="Uniform"
+                   MaxHeight="300"
+                   Margin="20"
+                   DockPanel.Dock="Top"/>
+
+            <!-- 其他内容 -->
             <TextBlock Text="Main content area" 
                        VerticalAlignment="Center" 
                        HorizontalAlignment="Center"

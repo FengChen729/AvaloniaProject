@@ -18,6 +18,7 @@
             <TreeDataTemplate DataType="{x:Type models:TreeNode}"
                               ItemsSource="{Binding Children}">
                 <StackPanel Orientation="Horizontal" Spacing="5">
+                    <Image Source="{Binding Icon}" Width="16" Height="16"/>
                     <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
                 </StackPanel>
             </TreeDataTemplate>
