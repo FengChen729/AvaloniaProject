@@ -37,9 +37,10 @@
             - 双向绑定选中项到SelectedPerson
             - 自定义列配置
         -->
-        <DataGrid Grid.Column="0"
+        <DataGrid Grid.Column="0" x:Name="PeopleGrid"
                   ItemsSource="{Binding People}"
                   SelectedItem="{Binding SelectedPerson, Mode=TwoWay}"
+                  SelectionMode="Single"
                   AutoGenerateColumns="False"
                   IsReadOnly="False"
                   CanUserResizeColumns="True"
@@ -52,7 +53,7 @@
                   Background="White">
             <DataGrid.Columns>
                 <!-- 姓名列 (文本) -->
-                <DataGridTextColumn Header="姓名" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="姓名" Binding="{Binding Name}" Width="*" IsReadOnly="True"/>
                 
                 <!-- 年龄列 (文本) -->
                 <DataGridTextColumn Header="年龄" Binding="{Binding Age}" Width="100"/>
