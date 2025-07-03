@@ -1,35 +1,17 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using AvaloniaApplication2.Models;
 
 namespace AvaloniaApplication2.ViewModels
 {
-    public class EditWindowViewModel : INotifyPropertyChanged
+    public class EditWindowViewModel : ViewModelBase
     {
-        private string _displayText;
-        
-        public string DisplayText
-        {
-            get => _displayText;
-            set
-            {
-                if (_displayText != value)
-                {
-                    _displayText = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
+        public Person Person { get; }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
+        public EducationLevel[] EducationLevels { get; }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
+        public EditWindowViewModel(Person person)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        public EditWindowViewModel(string name)
-        {
-            DisplayText = $"This is {name}";
+            Person = person;
+            EducationLevels = MainWindowViewModel.StaticEducationLevels;
         }
     }
 }

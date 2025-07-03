@@ -2,13 +2,34 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        xmlns:vm="clr-namespace:AvaloniaApplication2.ViewModels"
+        mc:Ignorable="d"
+        d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AvaloniaApplication2.Views.EditWindow"
-        Title="Edit">
-    <Grid>
-        <TextBlock x:Name="NameTextBlock"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontSize="20"/>
+        x:DataType="vm:EditWindowViewModel"
+        Title="编辑人员">
+
+    <Grid Margin="20" RowDefinitions="Auto,Auto,Auto,Auto,Auto" ColumnDefinitions="Auto,*" RowSpacing="10" ColumnSpacing="10">
+        <!-- 姓名 -->
+        <TextBlock Text="姓名：" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Person.Name}" Grid.Row="0" Grid.Column="1"/>
+
+        <!-- 年龄 -->
+        <TextBlock Text="年龄：" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+        <NumericUpDown Value="{Binding Person.Age}" Grid.Row="1" Grid.Column="1"
+                       Minimum="0" Maximum="120" Increment="1" FormatString="F0"/><!-- FormatString="F0"禁止小数出现 -->
+
+        <!-- 已婚 -->
+        <TextBlock Text="已婚：" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+        <CheckBox IsChecked="{Binding Person.IsMarried}" Grid.Row="2" Grid.Column="1" Content="是" />
+
+        <!-- 学历 -->
+        <TextBlock Text="学历：" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center"/>
+        <ComboBox ItemsSource="{Binding EducationLevels}"
+                  SelectedItem="{Binding Person.EducationLevel}"
+                  Grid.Row="3" Grid.Column="1"/>
+
+        <!-- 关闭按钮 -->
+        <Button Content="关闭" HorizontalAlignment="Right" Grid.Row="4" Grid.Column="1" Click="OnCloseClick"/>
     </Grid>
 </Window>

@@ -1,13 +1,20 @@
 ﻿using Avalonia.Controls;
+using AvaloniaApplication2.Models;
+using AvaloniaApplication2.ViewModels;
 
 namespace AvaloniaApplication2.Views
 {
     public partial class EditWindow : Window
     {
-        public EditWindow(string name)
+        public EditWindow(Person person)
         {
             InitializeComponent();
-            NameTextBlock.Text = $"This is {name}";
+            DataContext = new EditWindowViewModel(person);
+        }
+
+        private void OnCloseClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
