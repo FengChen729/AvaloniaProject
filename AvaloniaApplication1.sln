@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication1", "Ava
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication2", "AvaloniaApplication2\AvaloniaApplication2.csproj", "{AF05F956-2025-4F3A-BEFA-CF6AC7E8D787}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaApplication3", "AvaloniaApplication3\AvaloniaApplication3.csproj", "{3D2A818D-249C-476C-962D-657A4F5D6AE3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{AF05F956-2025-4F3A-BEFA-CF6AC7E8D787}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF05F956-2025-4F3A-BEFA-CF6AC7E8D787}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF05F956-2025-4F3A-BEFA-CF6AC7E8D787}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D2A818D-249C-476C-962D-657A4F5D6AE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D2A818D-249C-476C-962D-657A4F5D6AE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D2A818D-249C-476C-962D-657A4F5D6AE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D2A818D-249C-476C-962D-657A4F5D6AE3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

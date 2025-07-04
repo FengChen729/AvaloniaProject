@@ -1,0 +1,60 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaApplication3.Views.TitleBar">
+    <Border Background="#2c2c2c" Height="30">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+
+            <!-- 应用标题 -->
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0" Grid.Column="0">
+                <TextBlock Foreground="White" Text="🔧 AvaloniaDev" FontWeight="Bold"/>
+            </StackPanel>
+
+            <!-- 右上角按钮 -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Grid.Column="1" Margin="0,0,10,0" Spacing="6">
+                
+                <!-- 最小化 -->
+                <Button Width="32" Height="32" Background="Transparent"
+                        Click="MinimizeWindow_Click"
+                        PointerEntered="MinimizeButton_PointerEntered"
+                        PointerExited="MinimizeButton_PointerExited">
+                    <Image x:Name="MinimizeIcon" Source="avares://AvaloniaApplication3/Assets/Icons/minimize-2.png" Stretch="Uniform"/>
+                </Button>
+
+                <!-- 最大化/还原 -->
+                <Button Width="30" Height="30" Background="Transparent"
+                        Click="ToggleMaximizeWindow_Click"
+                        PointerEntered="MaximizeButton_PointerEntered"
+                        PointerExited="MaximizeButton_PointerExited">
+                    <Image x:Name="MaximizeIcon" Source="avares://AvaloniaApplication3/Assets/Icons/full-2.png" Stretch="Uniform"/>
+                </Button>
+
+                <!-- 关闭 -->
+                <Button x:Name="CloseButton"
+                        Width="32" Height="32"
+                        Background="Transparent"
+                        PointerEntered="CloseButton_PointerEntered"
+                        PointerExited="CloseButton_PointerExited"
+                        Click="CloseWindow_Click">
+                    <Grid>
+                        <!-- 背景色层 -->
+                        <Border x:Name="CloseButtonBg" Background="Transparent" Width="24" Height="24"/>
+
+                        <!-- 图标，禁止鼠标事件拦截 -->
+                        <Image x:Name="CloseIcon"
+                               Width="16" Height="16"
+                               Stretch="Uniform"
+                               IsHitTestVisible="False" />
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>
