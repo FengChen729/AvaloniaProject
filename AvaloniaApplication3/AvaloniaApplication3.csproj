@@ -25,6 +25,22 @@
         <DependentUpon>MainWindow.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+      <Compile Update="Views\Controls\ConsolePanel.axaml.cs">
+        <DependentUpon>ConsolePanel.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Controls\ExplorerPanel.axaml.cs">
+        <DependentUpon>ExplorerPanel.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Controls\TitleBar.axaml.cs">
+        <DependentUpon>TitleBar.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Controls\ToolSidebar.axaml.cs">
+        <DependentUpon>ToolSidebar.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 
     <ItemGroup>
@@ -52,6 +68,22 @@
       <AvaloniaResource Include="Assets\Icons\exitFull-1.png" />
       <None Remove="Assets\Icons\edxitFull-3.png" />
       <AvaloniaResource Include="Assets\Icons\exitFull-3.png" />
+      <None Remove="Assets\Icons\1.png" />
+      <AvaloniaResource Include="Assets\Icons\1.png" />
+      <None Remove="Assets\Icons\2.png" />
+      <AvaloniaResource Include="Assets\Icons\2.png" />
+      <None Remove="Assets\Icons\3.png" />
+      <AvaloniaResource Include="Assets\Icons\3.png" />
+      <None Remove="Assets\Icons\4.png" />
+      <AvaloniaResource Include="Assets\Icons\4.png" />
+      <None Remove="Assets\Icons\5.png" />
+      <AvaloniaResource Include="Assets\Icons\5.png" />
+      <None Remove="Assets\Icons\6.png" />
+      <AvaloniaResource Include="Assets\Icons\6.png" />
+      <None Remove="Assets\Icons\7.png" />
+      <AvaloniaResource Include="Assets\Icons\7.png" />
+      <None Remove="Assets\Icons\8.png" />
+      <AvaloniaResource Include="Assets\Icons\8.png" />
     </ItemGroup>
 
     <ItemGroup>

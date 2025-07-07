@@ -3,6 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:views="clr-namespace:AvaloniaApplication3.Views"
+        xmlns:controls1="clr-namespace:AvaloniaApplication3.Views.Controls"
         mc:Ignorable="d"
         d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AvaloniaApplication3.Views.MainWindow"
@@ -16,7 +17,7 @@
         <Border Background="#1e1e1e" Height="24" DockPanel.Dock="Bottom">
             <TextBlock Foreground="LightGray" VerticalAlignment="Center" Margin="10,0">状态：Ready</TextBlock>
         </Border>
-
+        
         <!-- 主体区域 -->
         <Grid>
             <Grid.ColumnDefinitions>
@@ -31,13 +32,13 @@
             </Grid.RowDefinitions>
 
             <!-- 左侧工具栏 -->
-            <views:ToolSidebar Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
+            <controls1:ToolSidebar Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Name="Sidebar"/>
 
             <!-- 左侧导航栏 -->
-            <views:ExplorerPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2"/>
+            <controls1:ExplorerPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Name="Explorer"/>
             
             <!-- 主编辑区 -->
-            <views:EditorArea Grid.Column="2" Grid.Row="0"/>
+            <controls1:EditorArea Grid.Column="2" Grid.Row="0"/>
 
             <!-- 控制台输出 -->
             <views:ConsolePanel Grid.Column="2" Grid.Row="1"/>

@@ -1,25 +1,24 @@
 ﻿using System;
-using AvaloniaApplication1.Models;
+using AvaloniaApplication3.Models;
 using System.Collections.ObjectModel;
 using System.IO;
 using Avalonia.Dialogs.Internal;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
-using AvaloniaApplication1.Models;
 
-namespace AvaloniaApplication1.ViewModel
+namespace AvaloniaApplication3.ViewModels
 {
     public class TreeViewModel : AvaloniaDialogsInternalViewModelBase
     {
         private ObservableCollection<TreeNode> _nodes = new ObservableCollection<TreeNode>();
-        
+
         // 树的根节点集合
         public ObservableCollection<TreeNode> Nodes
         {
             get => _nodes;
             set => this.RaiseAndSetIfChanged(ref _nodes, value);
         }
-        
+
         // 从指定路径加载树形结构（示例使用文件系统）
         public void LoadFromPath(string path)
         {
@@ -30,7 +29,7 @@ namespace AvaloniaApplication1.ViewModel
                 Nodes.Add(rootNode);
             }
         }
-        
+
         // 递归创建树节点******（可根据不同数据源重写此方法）******
         private TreeNode? CreateNodeFromPath(string path)
         {
@@ -74,7 +73,6 @@ namespace AvaloniaApplication1.ViewModel
             return node;
         }
 
-        
         private Bitmap? LoadIconForFile(string filePath)
         {
             string extension = Path.GetExtension(filePath).ToLower();
@@ -82,13 +80,13 @@ namespace AvaloniaApplication1.ViewModel
             // 你可以根据实际文件类型调整映射
             string iconPath = extension switch
             {
-                ".txt" => "assets/2.png",
-                ".pdf" => "assets/3.png",
-                ".doc" or ".docx" => "assets/4.png",
-                ".jpg" or ".jpeg" or ".png" => "assets/5.png",
-                ".exe" => "assets/6.png",
-                ".zip" or ".rar" => "assets/7.png",
-                _ => "assets/8.png"
+                ".txt" => "Assets/Icons/2.png",
+                ".pdf" => "Assets/Icons/3.png",
+                ".doc" or ".docx" => "Assets/Icons/4.png",
+                ".jpg" or ".jpeg" or ".png" => "Assets/Icons/5.png",
+                ".exe" => "Assets/Icons/6.png",
+                ".zip" or ".rar" => "Assets/Icons/7.png",
+                _ => "Assets/Icons/8.png"
             };
 
             return LoadBitmap(iconPath);
@@ -96,14 +94,14 @@ namespace AvaloniaApplication1.ViewModel
 
         private Bitmap? LoadIconForFolder()
         {
-            return LoadBitmap("assets/1.png");
+            return LoadBitmap("Assets/Icons/1.png");
         }
 
         private Bitmap? LoadBitmap(string relativePath)
         {
             try
             {
-                var uri = new Uri($"avares://AvaloniaApplication1/{relativePath}");
+                var uri = new Uri($"avares://AvaloniaApplication3/{relativePath}");
                 using var stream = AssetLoader.Open(uri);
                 return new Bitmap(stream);
             }

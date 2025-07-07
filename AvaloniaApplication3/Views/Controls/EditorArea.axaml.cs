@@ -2,11 +2,11 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace AvaloniaApplication3.Views;
+namespace AvaloniaApplication3.Views.Controls;
 
-public partial class ExplorerPanel : UserControl
+public partial class EditorArea : UserControl
 {
-    public ExplorerPanel()
+    public EditorArea()
     {
         InitializeComponent();
     }

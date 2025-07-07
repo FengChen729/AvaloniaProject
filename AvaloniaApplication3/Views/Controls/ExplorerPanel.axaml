@@ -1,0 +1,24 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:AvaloniaApplication3.Models"
+             xmlns:viewModel="clr-namespace:AvaloniaApplication3.ViewModels"
+             mc:Ignorable="d"
+             x:Class="AvaloniaApplication3.Views.Controls.ExplorerPanel"
+             d:DesignWidth="800" d:DesignHeight="450">
+    
+    <TreeView x:Name="FolderTreeView"
+              Background="White"
+              x:DataType="viewModel:TreeViewModel"
+              ItemsSource="{Binding Nodes}">
+        <TreeView.ItemTemplate>
+            <TreeDataTemplate DataType="{x:Type models:TreeNode}" ItemsSource="{Binding Children}">
+                <StackPanel Orientation="Horizontal" Spacing="5">
+                    <Image Source="{Binding Icon}" Width="16" Height="16"/>
+                    <TextBlock Text="{Binding Name}" VerticalAlignment="Center"/>
+                </StackPanel>
+            </TreeDataTemplate>
+        </TreeView.ItemTemplate>
+    </TreeView>
+</UserControl>
