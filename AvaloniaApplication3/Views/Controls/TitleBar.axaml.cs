@@ -6,7 +6,7 @@ using Avalonia.Media;
 using Avalonia.VisualTree;
 using AvaloniaApplication3.Utils;
 
-namespace AvaloniaApplication3.Views
+namespace AvaloniaApplication3.Views.Controls
 {
     public partial class TitleBar : UserControl
     {

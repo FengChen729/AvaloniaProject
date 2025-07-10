@@ -1,0 +1,35 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:AvaloniaApplication4.ViewModels"
+        mc:Ignorable="d"
+        x:Class="AvaloniaApplication4.Views.MessageWindow"
+        Title="CAN Message Table"
+        Width="1000" Height="600"
+        x:DataType="vm:CanMessageViewModel">
+    
+    <Grid Margin="10">
+        <DataGrid ItemsSource="{Binding Messages}"
+                  AutoGenerateColumns="False"
+                  x:Name="MessageDataGrid"
+                  IsReadOnly="True"
+                  GridLinesVisibility="All"
+                  HeadersVisibility="All"
+                  BorderBrush="Gray"
+                  BorderThickness="1"
+                  CanUserResizeColumns="True"
+                  Background="White">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Message Name" Binding="{Binding MassageName}" Width="*"/>
+                <DataGridTextColumn Header="Message ID" Binding="{Binding MassageId}" MinWidth="140"/>
+                <DataGridTextColumn Header="ID Format" Binding="{Binding MassageIdFormat}" MinWidth="140"/>
+                <DataGridTextColumn Header="DLC" Binding="{Binding DLC}" MinWidth="100"/>
+                <DataGridTextColumn Header="Tx Method" Binding="{Binding TxMethod}" MinWidth="140"/>
+                <DataGridTextColumn Header="Transmitter" Binding="{Binding Transmitter}" />
+                <DataGridTextColumn Header="Cycle Time" Binding="{Binding CycleTime}" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

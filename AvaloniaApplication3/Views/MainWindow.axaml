@@ -11,7 +11,7 @@
     <DockPanel>
 
         <!-- 顶部工具栏 -->
-        <views:TitleBar DockPanel.Dock="Top" />
+        <controls1:TitleBar DockPanel.Dock="Top" />
 
         <!-- 底部状态栏 -->
         <Border Background="#1e1e1e" Height="24" DockPanel.Dock="Bottom">
@@ -21,27 +21,42 @@
         <!-- 主体区域 -->
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40" />
-                <ColumnDefinition Width="250" />
-                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="40" /> <!-- ToolSidebar 固定宽度 -->
+                <ColumnDefinition Width="250" MinWidth="150"/> <!-- ExplorerPanel 初始宽度 -->
+                <ColumnDefinition Width="5"/> <!-- 分隔条 -->
+                <ColumnDefinition Width="*" MinWidth="200"/> <!-- Editor + Console -->
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="200" />
+                <RowDefinition Height="*" MinHeight="100"/> <!-- EditorArea -->
+                <RowDefinition Height="5"/> <!-- 水平分隔条 -->
+                <RowDefinition Height="200" MinHeight="100"/> <!-- ConsolePanel -->
             </Grid.RowDefinitions>
 
             <!-- 左侧工具栏 -->
-            <controls1:ToolSidebar Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Name="Sidebar"/>
+            <controls1:ToolSidebar Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Name="Sidebar"/>
 
             <!-- 左侧导航栏 -->
-            <controls1:ExplorerPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Name="Explorer"/>
-            
+            <controls1:ExplorerPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="3" Name="Explorer"/>
+
+            <!-- 垂直选项分隔条 -->
+            <GridSplitter Grid.Column="2" Grid.Row="0" Grid.RowSpan="3"
+                          Width="5" HorizontalAlignment="Stretch"
+                          Background="#1e1e1e"
+                          ShowsPreview="False"
+                          BorderThickness="0"
+            />
+
             <!-- 主编辑区 -->
-            <controls1:EditorArea Grid.Column="2" Grid.Row="0"/>
+            <controls1:EditorArea Grid.Column="3" Grid.Row="0"/>
+
+            <!-- 水平分隔条 -->
+            <GridSplitter Grid.Column="3" Grid.Row="1"
+                          Height="5" VerticalAlignment="Stretch"
+                          Background="#1e1e1e" ShowsPreview="False"/>
 
             <!-- 控制台输出 -->
-            <views:ConsolePanel Grid.Column="2" Grid.Row="1"/>
+            <views:ConsolePanel Grid.Column="3" Grid.Row="2"/>
         </Grid>
     </DockPanel>
 </Window>

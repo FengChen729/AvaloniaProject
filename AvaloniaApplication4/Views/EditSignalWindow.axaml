@@ -1,0 +1,134 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:AvaloniaApplication4.ViewModels"
+        x:Class="AvaloniaApplication4.Views.EditSignalWindow"
+        Width="1200" Height="700"
+        Title="Edit Signal"
+        WindowStartupLocation="CenterOwner">
+
+  <ScrollViewer>
+    <StackPanel Margin="20" Spacing="10" x:DataType="vm:EditSignalViewModel">
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Signal Name:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Signal.SignalName}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+      
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Message:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Signal.Message}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Bit Position:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Signal.ComBitPosition}" HorizontalAlignment="Left" Grid.Column="1" Name="BitPositionBox" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Bit Size:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Signal.ComBitSize}" HorizontalAlignment="Left" Grid.Column="1" Name="BitSizeBox" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Handle ID:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Signal.ComHandleId}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Notification:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ComboBox ItemsSource="{Binding NotificationChoices}" SelectedItem="{Binding Signal.ComNotification}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Data Invalid Value:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Signal.ComSignalDataInvalidValue}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Endianness:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ComboBox ItemsSource="{Binding EndiannessChoices}" SelectedItem="{Binding Signal.ComSignalEndianness}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Initial Value:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Signal.ComSignalInitValue}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Signal Length:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Signal.ComSignalLength}" HorizontalAlignment="Left" Grid.Column="1" Name="SignalLengthBox" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Signal Type:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ComboBox ItemsSource="{Binding SignalTypeChoices}" SelectedItem="{Binding Signal.ComSignalType}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Timeout:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Signal.ComTimeout}" HorizontalAlignment="Left" Grid.Column="1" Name="TimeoutBox" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Timeout Notification:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ComboBox ItemsSource="{Binding TimeoutNotificationChoices}" SelectedItem="{Binding Signal.ComTimeoutNotification}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Timeout Substitution Value:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Signal.ComTimeoutSubstitutionValue}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Update Bit Position:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Signal.ComUpdateBitPosition}" HorizontalAlignment="Left" Grid.Column="1" Name="UpdateBitBox" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Data Invalid Action:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Signal.ComDataInvalidAction}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="First Timeout:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <TextBox Text="{Binding Signal.ComFirstTimeout}" HorizontalAlignment="Left" Grid.Column="1" Name="FirstTimeoutBox" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Invalid Notification:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ComboBox ItemsSource="{Binding InvalidNotificationChoices}" SelectedItem="{Binding Signal.ComInvalidNotification}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Rx Timeout Action:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ComboBox ItemsSource="{Binding RxTimeoutActionChoices}" SelectedItem="{Binding Signal.ComRxDataTimeoutAction}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Error Notification:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ComboBox ItemsSource="{Binding ErrorNotificationChoices}" SelectedItem="{Binding Signal.ComErrorNotification}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Initial Only:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <CheckBox IsChecked="{Binding Signal.ComInitialValueOnly}" HorizontalAlignment="Left" Grid.Column="1"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Transfer Property:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ComboBox ItemsSource="{Binding TransferPropertyChoices}" SelectedItem="{Binding Signal.ComTransferProperty}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="System Signal Ref:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ComboBox ItemsSource="{Binding SystemSignalRefChoices}" SelectedItem="{Binding Signal.ComSystemTemplateSystemSignalRef}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
+        <TextBlock Text="Arc Signal Ref:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        <ComboBox ItemsSource="{Binding ArcSignalRefChoices}" SelectedItem="{Binding Signal.ArcSystemSignalRef}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
+      </Grid>
+
+      <Button Content="Save" HorizontalAlignment="Center" Width="100" Click="OnSaveClick"/>
+    </StackPanel>
+  </ScrollViewer>
+</Window>
