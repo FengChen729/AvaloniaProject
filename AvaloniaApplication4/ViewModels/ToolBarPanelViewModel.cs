@@ -1,34 +1,34 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using CommunityToolkit.Mvvm.Input;
+using System;
+using Avalonia.Controls;
 using Avalonia.Platform.Storage;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+using System.Threading.Tasks;
+using Avalonia.Controls.ApplicationLifetimes;
 
 namespace AvaloniaApplication4.ViewModels
 {
-    public partial class ToolBarPanelViewModel : ObservableObject
+    public class ToolBarPanelViewModel
     {
-        public Func<Task<IStorageFolder?>>? OpenFolderPickerAsync { get; set; }
+        public IAsyncRelayCommand OpenFolderCommand => new AsyncRelayCommand(OpenFolderAsync);
+        public IRelayCommand SaveCommand => new RelayCommand(() => Console.WriteLine("This is Save button!"));
 
-        [RelayCommand]
         private async Task OpenFolderAsync()
         {
-            if (OpenFolderPickerAsync is not null)
-            {
-                var folder = await OpenFolderPickerAsync.Invoke();
-                if (folder is not null)
-                {
-                    var path = folder.Path.LocalPath;
-                    Console.WriteLine($"[ToolBar] Opened folder: {path}");
-                    // 可以触发事件、通知 ExplorerPanel 等
-                }
-            }
-        }
+            var topLevel = TopLevel.GetTopLevel(App.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop ?
+                desktop.MainWindow : null);
+            if (topLevel is null)
+                return;
 
-        [RelayCommand]
-        private void Save()
-        {
-            Console.WriteLine("[ToolBar] Save clicked");
+            var result = await topLevel.StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
+            {
+                AllowMultiple = false,
+                Title = "选择一个文件夹"
+            });
+
+            if (result.Count > 0)
+            {
+                Console.WriteLine($"选中的文件夹路径：{result[0].Path.LocalPath}");
+            }
         }
     }
 }

@@ -1,14 +1,14 @@
-<UserControl xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="clr-namespace:AvaloniaApplication4.ViewModels"
-        mc:Ignorable="d"
-        x:Class="AvaloniaApplication4.Views.Controls.SignalWindow"
-        x:DataType="vm:CanSignalViewModel">
-
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:AvaloniaApplication4.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaApplication4.Views.Controls.SignalWindow"
+             x:DataType="viewModels:CanSignalViewModel">
+    
     <Design.DataContext>
-        <vm:CanSignalViewModel/>
+        <viewModels:CanSignalViewModel/>
     </Design.DataContext>
 
     <Grid Margin="10">
@@ -31,6 +31,7 @@
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Signal Name" Binding="{Binding SignalName}" />
+                <DataGridTextColumn Header="Message" Binding="{Binding Message}" />
                 <DataGridTextColumn Header="Bit Pos" Binding="{Binding ComBitPosition}" />
                 <DataGridTextColumn Header="Bit Size" Binding="{Binding ComBitSize}" />
                 <DataGridTextColumn Header="Handle ID" Binding="{Binding ComHandleId}" />

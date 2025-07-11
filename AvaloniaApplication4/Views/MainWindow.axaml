@@ -1,33 +1,14 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="clr-namespace:AvaloniaApplication4.ViewModels"
-        xmlns:controls1="clr-namespace:AvaloniaApplication4.Views.Controls"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:AvaloniaApplication4.Views.Controls"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AvaloniaApplication4.Views.MainWindow"
-        Width="1200" Height="800"
         Title="MainWindow">
-
-    <DockPanel>
-        <!-- 顶部主菜单栏 -->
-        <controls1:TopMenuBar DockPanel.Dock="Top"/>
-
-        <!-- 工具栏 -->
-        <controls1:ToolBarPanel DockPanel.Dock="Top" x:Name="ToolBar"/>
-
-        <!-- 底部状态栏 -->
-        <controls1:StatusBarPanel DockPanel.Dock="Bottom"/>
-
-        <!-- 主区域左右划分 -->
-        <Grid DataContext="{Binding}" x:DataType="vm:MainWindowViewModel">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
-            <!-- 左侧导航区域 -->
-            <controls1:ExplorerPanel Grid.Column="0"/>
-
-            <!-- 右侧功能区域 -->
-            <controls1:RightPanel Grid.Column="1" DataContext="{Binding RightPanelViewModel}" />
-        </Grid>
-    </DockPanel>
+    <StackPanel Orientation="Vertical">
+        <controls:MenuPanel DockPanel.Dock="Top" x:Name="MenuPanel"/>
+        <controls:ToolBarPanel DockPanel.Dock="Top" x:Name="ToolBarPanel"/>
+        <controls:StatusBarPanel DockPanel.Dock="Bottom" x:Name="StatusBarPanel"/>
+    </StackPanel>
 </Window>

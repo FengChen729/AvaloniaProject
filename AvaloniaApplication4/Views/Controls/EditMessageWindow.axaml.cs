@@ -17,4 +17,9 @@ public partial class EditMessageWindow : UserControl
     {
         DataContext = new EditMessageViewModel(signal);
     }
+
+    private void OnSaveClick(object? sender, RoutedEventArgs e)
+    {
+        Console.WriteLine("OnSaveClick");
+    }
 }

@@ -1,0 +1,17 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaApplication4.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="AvaloniaApplication4.Views.Controls.MenuPanel"
+             x:DataType="vm:MenuPanelViewModel">
+    <Menu>
+        <MenuItem Header="File" Command="{Binding FileCommand}"/>
+        <MenuItem Header="Edit" Command="{Binding EditCommand}"/>
+        <MenuItem Header="Project" Command="{Binding ProjectCommand}"/>
+        <MenuItem Header="Isoft" Command="{Binding IsoftCommand}"/>
+        <MenuItem Header="Window" Command="{Binding WindowCommand}"/>
+        <MenuItem Header="Help" Command="{Binding HelpCommand}"/>
+    </Menu>
+</UserControl>

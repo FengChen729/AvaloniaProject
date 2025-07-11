@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace AvaloniaApplication4.Views.Controls;
 
-public partial class ExplorerPanel : UserControl
+public partial class MenuPanel : UserControl
 {
-    public ExplorerPanel()
+    public MenuPanel()
     {
         InitializeComponent();
     }

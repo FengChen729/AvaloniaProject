@@ -23,12 +23,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Views\Controls\ExplorerPanel.axaml.cs">
-        <DependentUpon>ExplorerPanel.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
       <Compile Update="Views\Controls\EditMessageWindow.axaml.cs">
         <DependentUpon>EditMessageWindow.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\Controls\EditSignalWindow.axaml.cs">
+        <DependentUpon>EditSignalWindow.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
       <Compile Update="Views\Controls\MessageWindow.axaml.cs">
@@ -37,10 +37,6 @@
       </Compile>
       <Compile Update="Views\Controls\SignalWindow.axaml.cs">
         <DependentUpon>SignalWindow.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
-      <Compile Update="Views\Controls\EditSignalWindow.axaml.cs">
-        <DependentUpon>EditSignalWindow.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>

@@ -22,6 +22,11 @@ public partial class EditSignalWindow : UserControl
         DataContext = new EditSignalViewModel(signal);
     }
 
+    private void OnSaveClick(object? sender, RoutedEventArgs e)
+    {
+        Console.WriteLine("OnSaveClick");
+    }
+
     private void AttachDigitOnlyHandlers()
     {
         string[] numericBoxes = {

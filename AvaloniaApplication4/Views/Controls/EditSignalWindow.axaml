@@ -1,7 +1,8 @@
 ﻿<UserControl xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:AvaloniaApplication4.ViewModels"
-        x:Class="AvaloniaApplication4.Views.Controls.EditSignalWindow">
+        x:Class="AvaloniaApplication4.Views.Controls.EditSignalWindow"
+        Width="1200" Height="700">
 
   <ScrollViewer>
     <StackPanel Margin="20" Spacing="10" x:DataType="vm:EditSignalViewModel">
@@ -124,6 +125,8 @@
         <TextBlock Text="Arc Signal Ref:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <ComboBox ItemsSource="{Binding ArcSignalRefChoices}" SelectedItem="{Binding Signal.ArcSystemSignalRef}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
       </Grid>
+
+      <Button Content="Save" HorizontalAlignment="Center" Width="100" Click="OnSaveClick"/>
     </StackPanel>
   </ScrollViewer>
 </UserControl>
