@@ -1,15 +1,12 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="clr-namespace:AvaloniaApplication4.ViewModels"
-        mc:Ignorable="d"
-        x:Class="AvaloniaApplication4.Views.MessageWindow"
-        Title="CAN Message Table"
-        Width="1000" Height="600"
-        x:DataType="vm:CanMessageViewModel">
-    
-    <Grid Margin="10">
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaApplication4.ViewModels"
+             mc:Ignorable="d"
+             x:Class="AvaloniaApplication4.Views.Controls.MessageWindow">
+
+    <Grid Margin="10" x:DataType="vm:CanMessageViewModel">
         <DataGrid ItemsSource="{Binding Messages}"
                   AutoGenerateColumns="False"
                   x:Name="MessageDataGrid"
@@ -32,4 +29,4 @@
             </DataGrid.Columns>
         </DataGrid>
     </Grid>
-</Window>
+</UserControl>

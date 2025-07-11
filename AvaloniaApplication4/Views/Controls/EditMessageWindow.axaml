@@ -1,49 +1,51 @@
-﻿<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="clr-namespace:AvaloniaApplication4.ViewModels"
-        x:Class="AvaloniaApplication4.Views.EditMessageWindow"
-        Width="600" Height="500"
-        Title="Edit Message"
-        WindowStartupLocation="CenterOwner">
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:AvaloniaApplication4.ViewModels"
+             x:Class="AvaloniaApplication4.Views.Controls.EditMessageWindow">
 
   <ScrollViewer>
     <StackPanel Margin="20" Spacing="10" x:DataType="vm:EditMessageViewModel">
+      <!-- Message Name -->
       <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
         <TextBlock Text="Message Name:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox Text="{Binding Message.MassageName}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
       </Grid>
 
+      <!-- Message ID -->
       <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
         <TextBlock Text="Message ID:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox Text="{Binding Message.MassageId}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
       </Grid>
 
+      <!-- ID Format -->
       <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
         <TextBlock Text="ID Format:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <ComboBox ItemsSource="{Binding IdFormatChoices}" SelectedItem="{Binding Message.MassageIdFormat}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
       </Grid>
 
+      <!-- DLC -->
       <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
         <TextBlock Text="DLC:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox Text="{Binding Message.DLC}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
       </Grid>
 
+      <!-- Tx Method -->
       <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
         <TextBlock Text="Tx Method:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <ComboBox ItemsSource="{Binding TxMethodChoices}" SelectedItem="{Binding Message.TxMethod}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
       </Grid>
 
+      <!-- Transmitter -->
       <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
         <TextBlock Text="Transmitter:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <ComboBox ItemsSource="{Binding TransmitterChoices}" SelectedItem="{Binding Message.Transmitter}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
       </Grid>
 
+      <!-- Cycle Time -->
       <Grid ColumnDefinitions="200, *" ColumnSpacing="10">
         <TextBlock Text="Cycle Time:" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         <TextBox Text="{Binding Message.CycleTime}" HorizontalAlignment="Left" Grid.Column="1" Width="300"/>
       </Grid>
-
-      <Button Content="Save" HorizontalAlignment="Center" Width="100" Click="OnSaveClick"/>
     </StackPanel>
   </ScrollViewer>
-</Window>
+</UserControl>

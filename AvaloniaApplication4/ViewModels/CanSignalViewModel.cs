@@ -3,11 +3,11 @@ using AvaloniaApplication4.Models;
 
 namespace AvaloniaApplication4.ViewModels
 {
-    public class ViewModel : ViewModelBase
+    public class CanSignalViewModel : ViewModelBase
     {
         public ObservableCollection<CanSignal> Signals { get; set; } = new();
 
-        public ViewModel()
+        public CanSignalViewModel()
         {
             // 示例数据
             Signals.Add(new CanSignal

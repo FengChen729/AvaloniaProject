@@ -17,14 +17,14 @@ public class EditSignalViewModel : INotifyPropertyChanged
         Signal = signal;
     }
 
-    public string[] NotificationChoices => ViewModel.NotificationChoices;
-    public string[] EndiannessChoices => ViewModel.EndiannessChoices;
-    public string[] SignalTypeChoices => ViewModel.SignalTypeChoices;
-    public string[] TimeoutNotificationChoices => ViewModel.TimeoutNotificationChoices;
-    public string[] InvalidNotificationChoices => ViewModel.InvalidNotificationChoices;
-    public string[] RxTimeoutActionChoices => ViewModel.RxTimeoutActionChoices;
-    public string[] ErrorNotificationChoices => ViewModel.ErrorNotificationChoices;
-    public string[] TransferPropertyChoices => ViewModel.TransferPropertyChoices;
-    public string[] SystemSignalRefChoices => ViewModel.SystemSignalRefChoices;
-    public string[] ArcSignalRefChoices => ViewModel.ArcSignalRefChoices;
+    public string[] NotificationChoices => CanSignalViewModel.NotificationChoices;
+    public string[] EndiannessChoices => CanSignalViewModel.EndiannessChoices;
+    public string[] SignalTypeChoices => CanSignalViewModel.SignalTypeChoices;
+    public string[] TimeoutNotificationChoices => CanSignalViewModel.TimeoutNotificationChoices;
+    public string[] InvalidNotificationChoices => CanSignalViewModel.InvalidNotificationChoices;
+    public string[] RxTimeoutActionChoices => CanSignalViewModel.RxTimeoutActionChoices;
+    public string[] ErrorNotificationChoices => CanSignalViewModel.ErrorNotificationChoices;
+    public string[] TransferPropertyChoices => CanSignalViewModel.TransferPropertyChoices;
+    public string[] SystemSignalRefChoices => CanSignalViewModel.SystemSignalRefChoices;
+    public string[] ArcSignalRefChoices => CanSignalViewModel.ArcSignalRefChoices;
 }

@@ -1,30 +1,26 @@
-using Avalonia.Controls;
-using AvaloniaApplication4.Behaviors;
-using AvaloniaApplication4.Models;
+﻿using Avalonia.Controls;
+using Avalonia.Platform.Storage;
 using AvaloniaApplication4.ViewModels;
 
-namespace AvaloniaApplication4.Views
-{
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-            DataContext = new ViewModel();
+namespace AvaloniaApplication4.Views;
 
-            var grid = this.FindControl<DataGrid>("DataGrid");
-            if (grid != null)
+public partial class MainWindow : Window
+{
+    public MainWindow()
+    {
+        InitializeComponent();
+
+        var viewModel = new MainWindowViewModel();
+        DataContext = viewModel;
+
+        // 注入文件夹选择器函数
+        ToolBar.InitViewModel(async () =>
+        {
+            var result = await StorageProvider.OpenFolderPickerAsync(new FolderPickerOpenOptions
             {
-                DataGridDoubleClickBehavior.SetOnDoubleClick(grid, signalObj =>
-                {
-                    if (signalObj is CanSignal signal)
-                    {
-                        var editWindow = new EditSignalWindow(signal);
-                        editWindow.Show();
-                    }
-                });
-                DataGridDoubleClickBehavior.SetTargetColumnHeaders(DataGrid, new []{"Signal Name"});
-            }
-        }
+                AllowMultiple = false
+            });
+            return result?.Count > 0 ? result[0] : null;
+        });
     }
 }

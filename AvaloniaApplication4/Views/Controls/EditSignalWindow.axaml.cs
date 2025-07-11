@@ -1,12 +1,13 @@
-﻿using Avalonia.Controls;
+﻿using System;
+using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Input;
 using AvaloniaApplication4.Models;
 using AvaloniaApplication4.ViewModels;
 
-namespace AvaloniaApplication4.Views;
+namespace AvaloniaApplication4.Views.Controls;
 
-public partial class EditSignalWindow : Window
+public partial class EditSignalWindow : UserControl
 {
     public EditSignalWindow()
     {
@@ -19,11 +20,6 @@ public partial class EditSignalWindow : Window
     public EditSignalWindow(CanSignal signal) : this()
     {
         DataContext = new EditSignalViewModel(signal);
-    }
-
-    private void OnSaveClick(object? sender, RoutedEventArgs e)
-    {
-        Close(); // 原始对象已绑定并修改，无需额外返回
     }
 
     private void AttachDigitOnlyHandlers()

@@ -1,0 +1,42 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:AvaloniaApplication4.ViewModels"
+             xmlns:controls1="clr-namespace:AvaloniaApplication4.Views.Controls"
+             x:Class="AvaloniaApplication4.Views.Controls.RightPanel"
+             x:DataType="vm:MainWindowViewModel">
+
+    <Grid>
+        <!-- 切换布局（横向或纵向） -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        
+        <!-- Tab + 布局切换按钮 -->
+        <DockPanel Grid.Row="0" Margin="5">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Left">
+                <Button Content="⇅" Command="{Binding ToggleLayoutCommand}" />
+                <Button Content="⇆" Margin="5,0,0,0" Command="{Binding ToggleLayoutCommand}" />
+            </StackPanel>
+            <TabControl Items="{Binding OpenTabs}" SelectedIndex="{Binding SelectedTabIndex}">
+                <TabControl.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" />
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+            </TabControl>
+        </DockPanel>
+
+        <!-- 展示区域 -->
+        <controls1:MessageWindow Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="{Binding IsHorizontalLayout, Converter={StaticResource BoolToColumnSpanConverter}}" />
+
+        <!-- 编辑区域 -->
+        <controls1:EditMessageWindow Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="{Binding IsHorizontalLayout, Converter={StaticResource BoolToColumnSpanConverter}}" />
+    </Grid>
+</UserControl>

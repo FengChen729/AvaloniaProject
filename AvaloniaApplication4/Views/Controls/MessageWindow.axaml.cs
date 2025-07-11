@@ -3,9 +3,9 @@ using AvaloniaApplication4.Behaviors;
 using AvaloniaApplication4.Models;
 using AvaloniaApplication4.ViewModels;
 
-namespace AvaloniaApplication4.Views;
+namespace AvaloniaApplication4.Views.Controls;
 
-public partial class MessageWindow : Window
+public partial class MessageWindow : UserControl
 {
     public MessageWindow()
     {
@@ -19,11 +19,12 @@ public partial class MessageWindow : Window
             {
                 if (messageObj is CanMessage message)
                 {
+                    // 弹窗需依赖父容器或调用回调进行处理
                     var editWindow = new EditMessageWindow(message);
-                    editWindow.Show();
                 }
             });
-            DataGridDoubleClickBehavior.SetTargetColumnHeaders(MessageDataGrid, new []{"Message Name"});
+
+            DataGridDoubleClickBehavior.SetTargetColumnHeaders(grid, new[] { "Message Name" });
         }
     }
 }
