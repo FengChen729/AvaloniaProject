@@ -14,5 +14,6 @@ public partial class MainWindow : Window
         MenuPanel.DataContext = new MenuPanelViewModel();
         ToolBarPanel.DataContext = new ToolBarPanelViewModel();
         StatusBarPanel.DataContext = new StatusBarPanelViewModel();
+        ExplorerPanel.DataContext = new ExplorerPanelViewModel();
     }
 }

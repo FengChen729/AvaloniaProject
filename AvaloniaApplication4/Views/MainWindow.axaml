@@ -1,14 +1,31 @@
 ﻿<Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:controls="clr-namespace:AvaloniaApplication4.Views.Controls"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        xmlns:views="clr-namespace:AvaloniaApplication4.Views.Controls"
         x:Class="AvaloniaApplication4.Views.MainWindow"
+        Width="1200" Height="800"
         Title="MainWindow">
-    <StackPanel Orientation="Vertical">
-        <controls:MenuPanel DockPanel.Dock="Top" x:Name="MenuPanel"/>
-        <controls:ToolBarPanel DockPanel.Dock="Top" x:Name="ToolBarPanel"/>
-        <controls:StatusBarPanel DockPanel.Dock="Bottom" x:Name="StatusBarPanel"/>
-    </StackPanel>
+
+    <DockPanel>
+
+        <!-- 顶部菜单栏 -->
+        <views:MenuPanel DockPanel.Dock="Top" x:Name="MenuPanel"/>
+
+        <!-- 工具栏 -->
+        <views:ToolBarPanel DockPanel.Dock="Top" x:Name="ToolBarPanel"/>
+
+        <!-- 底部状态栏 -->
+        <views:StatusBarPanel DockPanel.Dock="Bottom" x:Name="StatusBarPanel"/>
+
+        <!-- 主区域：左侧导航 + 右侧工作区 -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- 左侧 ExplorerPanel 控件 -->
+            <views:ExplorerPanel Grid.Column="0" x:Name="ExplorerPanel"/>
+
+        </Grid>
+    </DockPanel>
 </Window>

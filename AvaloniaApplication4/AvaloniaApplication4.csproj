@@ -35,9 +35,5 @@
         <DependentUpon>MessageWindow.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
-      <Compile Update="Views\Controls\SignalWindow.axaml.cs">
-        <DependentUpon>SignalWindow.axaml</DependentUpon>
-        <SubType>Code</SubType>
-      </Compile>
     </ItemGroup>
 </Project>
